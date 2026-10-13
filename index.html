@@ -1,0 +1,1154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaMart | Online Store</title>
+
+<!-- Icons -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+button, input, select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+.navbar {
+    background: white;
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    box-shadow: 0 2px 12px #00000008;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.logo span {
+    color: #1e293b;
+}
+
+.search {
+    display: flex;
+    background: #f1f5f9;
+    border-radius: 8px;
+    padding: 10px;
+    width: 35%;
+}
+
+.search input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding-left: 8px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-btn {
+    background: transparent;
+    color: #334155;
+    font-size: 15px;
+}
+
+.cart-btn {
+    background: #2563eb;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+
+.hero {
+    margin: 25px auto;
+    width: 90%;
+    min-height: 330px;
+    padding: 50px;
+    border-radius: 18px;
+    background: linear-gradient(120deg, #dbeafe, #eff6ff, #f5f3ff);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    overflow: hidden;
+}
+
+.hero-text {
+    max-width: 550px;
+    animation: slideIn 0.8s ease;
+}
+
+.hero h1 {
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.2;
+    margin: 15px 0;
+}
+
+.hero p {
+    color: #64748b;
+    margin-bottom: 22px;
+}
+
+.hero img {
+    width: 38%;
+    max-height: 280px;
+    object-fit: contain;
+    animation: float 3s infinite ease-in-out;
+}
+
+.primary-btn {
+    background: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.primary-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-3px);
+}
+
+.section {
+    width: 90%;
+    margin: 45px auto;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.section-heading h2 {
+    font-size: 25px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.filter-btn {
+    padding: 9px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 25px;
+    background: white;
+    color: #475569;
+    transition: 0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.product {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+    padding: 16px;
+    overflow: hidden;
+    transition: 0.3s;
+    animation: fadeIn 0.5s ease;
+}
+
+.product:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 30px #0f172a12;
+}
+
+.product-img {
+    background: white;
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.product-img img {
+    max-width: 90%;
+    max-height: 170px;
+    object-fit: contain;
+    transition: 0.3s;
+}
+
+.product:hover .product-img img {
+    transform: scale(1.06);
+}
+
+.product h3 {
+    font-size: 14px;
+    line-height: 1.6;
+    height: 45px;
+    overflow: hidden;
+}
+
+.category {
+    color: #64748b;
+    font-size: 12px;
+    text-transform: capitalize;
+    margin: 8px 0;
+}
+
+.rating {
+    color: #f59e0b;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.price {
+    color: #2563eb;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.product-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.add-btn {
+    background: #2563eb;
+    color: white;
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    background: #1d4ed8;
+}
+
+.heart-btn {
+    background: #eff6ff;
+    color: #2563eb;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.status {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+    grid-column: 1 / -1;
+}
+
+footer {
+    background: #0f172a;
+    color: white;
+    padding: 40px 7%;
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+footer p {
+    color: #cbd5e1;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.socials {
+    display: flex;
+    gap: 18px;
+    margin-top: 15px;
+}
+
+.socials a {
+    color: white;
+    font-size: 20px;
+}
+
+.socials a:hover {
+    color: #93c5fd;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: #0f172acc;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    z-index: 30;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    background: white;
+    width: 100%;
+    max-width: 420px;
+    padding: 30px;
+    border-radius: 15px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close-btn {
+    position: absolute;
+    right: 18px;
+    top: 15px;
+    background: transparent;
+    font-size: 23px;
+    color: #64748b;
+}
+
+.modal-box h2 {
+    margin-bottom: 8px;
+}
+
+.modal-box p {
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.modal-box input {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    margin-bottom: 13px;
+    outline: none;
+}
+
+.modal-box input:focus {
+    border-color: #2563eb;
+}
+
+.full-btn {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.switch-form {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 13px;
+}
+
+.switch-form button {
+    color: #2563eb;
+    background: transparent;
+    font-weight: 600;
+}
+
+.drawer {
+    position: fixed;
+    inset: 0;
+    background: #0f172a99;
+    z-index: 20;
+    display: none;
+}
+
+.drawer.show {
+    display: block;
+}
+
+.cart-panel {
+    background: white;
+    width: min(440px, 100%);
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s ease;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cart-header button {
+    background: transparent;
+    font-size: 24px;
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    gap: 12px;
+    padding: 15px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.cart-item img {
+    width: 65px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-info h4 {
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.cart-item-info p {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.quantity button {
+    background: #eff6ff;
+    color: #2563eb;
+    padding: 3px 9px;
+    border-radius: 5px;
+}
+
+.remove-btn {
+    background: transparent;
+    color: #ef4444;
+}
+
+.cart-footer {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 20px;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-15px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@media (max-width: 1000px) {
+    .products {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .hero {
+        padding: 35px;
+    }
+}
+
+@media (max-width: 700px) {
+    .navbar {
+        padding: 15px 5%;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .search {
+        order: 3;
+        width: 100%;
+    }
+
+    .nav-actions {
+        gap: 10px;
+    }
+
+    .nav-btn {
+        font-size: 13px;
+    }
+
+    .hero {
+        padding: 25px;
+        min-height: 260px;
+    }
+
+    .hero img {
+        width: 35%;
+    }
+
+    .section {
+        width: 92%;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .product {
+        padding: 10px;
+    }
+
+    .product-img {
+        height: 150px;
+    }
+
+    .product-img img {
+        max-height: 130px;
+    }
+
+    .price {
+        font-size: 16px;
+    }
+
+    .add-btn {
+        padding: 8px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero {
+        padding: 18px;
+    }
+
+    .hero img {
+        width: 30%;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .product-bottom {
+        flex-wrap: wrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">Nova<span>Mart.</span></div>
+
+    <div class="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput"
+        placeholder="Search products...">
+    </div>
+
+    <div class="nav-actions">
+        <button class="nav-btn" onclick="openAuth()">
+            <i class="fa-regular fa-user"></i>
+            <span id="userText">Login</span>
+        </button>
+
+        <button class="cart-btn" onclick="openCart()">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Cart (<span id="cartCount">0</span>)
+        </button>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-text">
+        <p>WELCOME TO NOVAMART</p>
+        <h1>Shop Smart.<br>Live Better.</h1>
+        <p>Discover amazing products at great prices.
+        Your everyday shopping starts here.</p>
+        <button class="primary-btn"
+        onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
+            Shop Now <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <img
+    src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+    alt="Featured shopping product">
+</section>
+
+<!-- PRODUCTS -->
+<section class="section" id="shop">
+    <div class="section-heading">
+        <h2>Our Products</h2>
+        <span id="productCount">Loading...</span>
+    </div>
+
+    <div class="filters" id="filters">
+        <button class="filter-btn active"
+        onclick="setCategory('all', this)">All Products</button>
+
+        <button class="filter-btn"
+        onclick="setCategory('electronics', this)">Electronics</button>
+
+        <button class="filter-btn"
+        onclick="setCategory('jewelery', this)">Jewellery</button>
+
+        <button class="filter-btn"
+        onclick="setCategory('men', this)">Men's Clothing</button>
+
+        <button class="filter-btn"
+        onclick="setCategory('women', this)">Women's Clothing</button>
+    </div>
+
+    <div class="products" id="products">
+        <div class="status">Loading products...</div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div>
+        <div class="logo">Nova<span style="color:white">Mart.</span></div>
+        <p>Your favourite products, all in one place.</p>
+        <p>&copy; 2026 NovaMart. Demo store.</p>
+    </div>
+
+    <div>
+        <h3>Quick Links</h3>
+        <p><a href="#shop" style="color:inherit">Shop Products</a></p>
+        <p>Customer Support</p>
+        <div class="socials">
+            <a href="https://facebook.com" aria-label="Facebook">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://instagram.com" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://x.com" aria-label="X">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<!-- LOGIN / SIGNUP MODAL -->
+<div class="modal" id="authModal">
+    <div class="modal-box">
+        <button class="close-btn" onclick="closeAuth()"
+        aria-label="Close">&times;</button>
+
+        <h2 id="authTitle">Welcome Back!</h2>
+        <p id="authDescription">Login to continue shopping.</p>
+
+        <form id="authForm">
+            <input type="text" id="authName"
+            placeholder="Your name" autocomplete="name"
+            style="display:none">
+
+            <input type="email" id="authEmail"
+            placeholder="Email address" required
+            autocomplete="email">
+
+            <input type="password" id="authPassword"
+            placeholder="Password" required minlength="6"
+            autocomplete="current-password">
+
+            <button type="submit" class="primary-btn full-btn"
+            id="authSubmit">Login</button>
+        </form>
+
+        <div class="switch-form">
+            <span id="switchText">Don't have an account?</span>
+            <button onclick="switchAuth()" id="switchButton">
+                Sign Up
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="drawer" id="cartDrawer">
+    <div class="cart-panel">
+        <div class="cart-header">
+            <h2><i class="fa-solid fa-cart-shopping"></i> Your Cart</h2>
+            <button onclick="closeCart()" aria-label="Close cart">
+                &times;
+            </button>
+        </div>
+
+        <div class="cart-items" id="cartItems"></div>
+
+        <div class="cart-footer">
+            <div class="total">
+                <span>Total</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+
+            <button class="primary-btn full-btn"
+            onclick="checkout()">
+                Proceed to Checkout
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+// VARIABLES
+let allProducts = [];
+let cart = JSON.parse(localStorage.getItem("novaCart")) || [];
+let currentCategory = "all";
+let searchText = "";
+let isSignup = false;
+let currentUser = JSON.parse(localStorage.getItem("novaUser")) || null;
+
+// LOAD PRODUCTS FROM API
+async function loadProducts() {
+    const productsDiv = document.getElementById("products");
+
+    try {
+        const response = await fetch("https://fakestoreapi.com/products");
+
+        if (!response.ok) {
+            throw new Error("Could not load products");
+        }
+
+        allProducts = await response.json();
+        showProducts();
+    } catch (error) {
+        productsDiv.innerHTML = `
+            <div class="status">
+                Unable to load products.
+                Please check your internet and refresh.
+                <br><br>
+                <button class="primary-btn" onclick="loadProducts()">
+                    Try Again
+                </button>
+            </div>`;
+        document.getElementById("productCount").textContent = "0 products";
+    }
+}
+
+// DISPLAY PRODUCTS
+function showProducts() {
+    const productsDiv = document.getElementById("products");
+    productsDiv.innerHTML = "";
+
+    let filteredProducts = allProducts.filter(function(product) {
+        const category = product.category.toLowerCase();
+
+        const matchesCategory =
+            currentCategory === "all" ||
+            category === currentCategory ||
+            (currentCategory === "men" && category === "men's clothing") ||
+            (currentCategory === "women" && category === "women's clothing");
+
+        const matchesSearch =
+            product.title.toLowerCase().includes(searchText);
+
+        return matchesCategory && matchesSearch;
+    });
+
+    document.getElementById("productCount").textContent =
+        filteredProducts.length + " products";
+
+    if (filteredProducts.length === 0) {
+        productsDiv.innerHTML =
+            '<div class="status">No products found.</div>';
+        return;
+    }
+
+    filteredProducts.forEach(function(product) {
+        const card = document.createElement("div");
+        card.className = "product";
+
+        card.innerHTML = `
+            <div class="product-img">
+                <img src="${product.image}" alt="${escapeHTML(product.title)}"
+                loading="lazy">
+            </div>
+
+            <p class="category">${escapeHTML(product.category)}</p>
+
+            <h3>${escapeHTML(product.title)}</h3>
+
+            <div class="rating">
+                <i class="fa-solid fa-star"></i>
+                ${product.rating.rate}
+                <span style="color:#94a3b8">
+                    (${product.rating.count})
+                </span>
+            </div>
+
+            <div class="product-bottom">
+                <span class="price">$${product.price.toFixed(2)}</span>
+
+                <button class="add-btn"
+                onclick="addToCart(${product.id})">
+                    <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+            </div>
+        `;
+
+        productsDiv.appendChild(card);
+    });
+}
+
+// ESCAPE API TEXT BEFORE SHOWING IT AS HTML
+function escapeHTML(text) {
+    return String(text).replace(/[&<>"']/g, function(char) {
+        return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        }[char];
+    });
+}
+
+// SEARCH PRODUCTS
+document.getElementById("searchInput").addEventListener("input", function() {
+    searchText = this.value.toLowerCase().trim();
+    showProducts();
+});
+
+// CATEGORY FILTER
+function setCategory(category, button) {
+    currentCategory = category;
+
+    document.querySelectorAll(".filter-btn").forEach(function(btn) {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    showProducts();
+}
+
+// ADD TO CART
+function addToCart(id) {
+    const existingItem = cart.find(function(item) {
+        return item.id === id;
+    });
+
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({ id: id, quantity: 1 });
+    }
+
+    saveCart();
+    alert("Product added to cart!");
+}
+
+// SAVE CART
+function saveCart() {
+    localStorage.setItem("novaCart", JSON.stringify(cart));
+    updateCartCount();
+    showCart();
+}
+
+// CART COUNTER
+function updateCartCount() {
+    let count = 0;
+
+    cart.forEach(function(item) {
+        count += item.quantity;
+    });
+
+    document.getElementById("cartCount").textContent = count;
+}
+
+// SHOW CART ITEMS
+function showCart() {
+    const cartItems = document.getElementById("cartItems");
+    cartItems.innerHTML = "";
+
+    let total = 0;
+
+    if (cart.length === 0) {
+        cartItems.innerHTML =
+            '<div class="status">Your cart is empty.</div>';
+    }
+
+    cart.forEach(function(item) {
+        const product = allProducts.find(function(p) {
+            return p.id === item.id;
+        });
+
+        if (!product) return;
+
+        total += product.price * item.quantity;
+
+        const div = document.createElement("div");
+        div.className = "cart-item";
+
+        div.innerHTML = `
+            <img src="${product.image}" alt="${escapeHTML(product.title)}">
+
+            <div class="cart-item-info">
+                <h4>${escapeHTML(product.title)}</h4>
+                <p>$${(product.price * item.quantity).toFixed(2)}</p>
+
+                <div class="quantity">
+                    <button onclick="changeQuantity(${item.id}, -1)">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="changeQuantity(${item.id}, 1)">+</button>
+                    <button class="remove-btn"
+                    onclick="removeItem(${item.id})">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+
+        cartItems.appendChild(div);
+    });
+
+    document.getElementById("cartTotal").textContent =
+        "$" + total.toFixed(2);
+}
+
+// CHANGE QUANTITY
+function changeQuantity(id, change) {
+    const item = cart.find(function(product) {
+        return product.id === id;
+    });
+
+    if (!item) return;
+
+    item.quantity += change;
+
+    if (item.quantity <= 0) {
+        cart = cart.filter(function(product) {
+            return product.id !== id;
+        });
+    }
+
+    saveCart();
+}
+
+// REMOVE PRODUCT
+function removeItem(id) {
+    cart = cart.filter(function(item) {
+        return item.id !== id;
+    });
+
+    saveCart();
+}
+
+// OPEN AND CLOSE CART
+function openCart() {
+    showCart();
+    document.getElementById("cartDrawer").classList.add("show");
+}
+
+function closeCart() {
+    document.getElementById("cartDrawer").classList.remove("show");
+}
+
+document.getElementById("cartDrawer").addEventListener("click", function(e) {
+    if (e.target === this) closeCart();
+});
+
+// LOGIN AND SIGNUP
+function openAuth() {
+    if (currentUser) {
+        if (confirm("Logout from your account?")) {
+            currentUser = null;
+            localStorage.removeItem("novaUser");
+            updateUser();
+        }
+        return;
+    }
+
+    document.getElementById("authModal").classList.add("show");
+}
+
+function closeAuth() {
+    document.getElementById("authModal").classList.remove("show");
+}
+
+function switchAuth() {
+    isSignup = !isSignup;
+
+    document.getElementById("authTitle").textContent =
+        isSignup ? "Create Account" : "Welcome Back!";
+
+    document.getElementById("authDescription").textContent =
+        isSignup ? "Sign up to start shopping." : "Login to continue shopping.";
+
+    document.getElementById("authName").style.display =
+        isSignup ? "block" : "none";
+
+    document.getElementById("authName").required = isSignup;
+
+    document.getElementById("authPassword").autocomplete =
+        isSignup ? "new-password" : "current-password";
+
+    document.getElementById("authSubmit").textContent =
+        isSignup ? "Sign Up" : "Login";
+
+    document.getElementById("switchText").textContent =
+        isSignup ? "Already have an account?" : "Don't have an account?";
+
+    document.getElementById("switchButton").textContent =
+        isSignup ? "Login" : "Sign Up";
+}
+
+// HANDLE FORM
+document.getElementById("authForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("authName").value.trim();
+    const email = document.getElementById("authEmail").value.trim().toLowerCase();
+    const password = document.getElementById("authPassword").value;
+
+    let users = JSON.parse(localStorage.getItem("novaUsers")) || [];
+
+    if (isSignup) {
+        if (!name) {
+            alert("Please enter your name.");
+            return;
+        }
+
+        const exists = users.find(function(user) {
+            return user.email === email;
+        });
+
+        if (exists) {
+            alert("This email is already registered. Please login.");
+            return;
+        }
+
+        // Demo only: do not store real passwords this way.
+        users.push({ name: name, email: email, password: password });
+
+        localStorage.setItem("novaUsers", JSON.stringify(users));
+
+        alert("Signup successful! You can now login.");
+        switchAuth();
+        document.getElementById("authForm").reset();
+    } else {
+        const user = users.find(function(user) {
+            return user.email === email && user.password === password;
+        });
+
+        if (!user) {
+            alert("Invalid email or password.");
+            return;
+        }
+
+        currentUser = { name: user.name, email: user.email };
+
+        localStorage.setItem("novaUser", JSON.stringify(currentUser));
+
+        closeAuth();
+        updateUser();
+        this.reset();
+
+        alert("Login successful! Welcome " + currentUser.name);
+    }
+});
+
+// UPDATE USER NAME
+function updateUser() {
+    document.getElementById("userText").textContent =
+        currentUser ? currentUser.name : "Login";
+}
+
+// DEMO CHECKOUT
+function checkout() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    if (!currentUser) {
+        closeCart();
+        openAuth();
+        alert("Please login before checkout.");
+        return;
+    }
+
+    alert("Demo checkout only. Connect a backend and payment gateway to place real orders.");
+}
+
+// START WEBSITE
+loadProducts();
+updateCartCount();
+updateUser();
+</script>
+
+</body>
+</html>
